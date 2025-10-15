@@ -26,3 +26,46 @@ first a connectivity check with machines:
 
 
 
+
+
+
+-------------------------------------------------------------------
+
+
+
+## Tasks and Scenarios:
+
+
+#### Create Zone
+Add a new zone definition and database file
+
+
+#### Create DB
+Add a new database file
+
+
+
+#### Add Record
+Insert a selected DNS record
+
+
+#### Modify Record
+Delete or update a record
+
+
+#### Configure Cache-Only Mode
+Set up a node as a caching resolver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
