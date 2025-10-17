@@ -159,9 +159,61 @@ now *dns-master* is ready.
 <summary> Slave </summary>
 
 
+`named.conf.local.slave` (to send to the slave mashin),
 
-#### Create Zone
+```
+zone "sina" {
+    type slave;
+    file "/var/lib/bind/db.sina";
+    masters { 192.168.1.11; };
+};
+```
 
+and, play for setting the conf file to start the syncing
+`deploy_slave.yaml`
+
+```
+- name: Deploy BIND on slave
+  hosts: dns-slave
+  become: yes
+
+  tasks:
+    - name: Install BIND9
+      apt:
+        name: bind9
+        state: present
+        update_cache: yes
+
+    - name: Copy named.conf.local for slave
+      copy:
+        src: ../../files/slave/named.conf.local.slave
+        dest: /etc/bind/named.conf.local
+        owner: root
+        group: bind
+        mode: '0644'
+      notify: restart bind
+
+    - name: Ensure BIND is running
+      systemd:
+        name: bind9
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: restart bind
+      systemd:
+        name: bind9
+        state: restarted
+```
+
+
+now a test:
+
+<img width="952" height="552" alt="dig slave" src="https://github.com/user-attachments/assets/47595b54-ed70-45a1-9bcf-49a37742189f" />
+
+
+
+*dns-master* is ready.
 
 
 </details> 
