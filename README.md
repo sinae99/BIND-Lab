@@ -24,6 +24,7 @@ deploying master and slave servers, creating and managing zones, adding DNS reco
 
 ## Initial Deploy:
 
+
 `ansible.cfg` :
 
 ```
@@ -45,8 +46,15 @@ first a connectivity check with machines after sharing the pub keys:
 
 
 
+
+<details> 
+ 
+<summary> Master </summary>
+
+
+
 #### Create Zone
-( Add a new zone definition and database file )
+
 
 `install_bind_master.yaml` 
 
@@ -75,7 +83,7 @@ first a connectivity check with machines after sharing the pub keys:
 
 
 #### Create DB
-( Add a new database file )
+
 
 i created files that i need in this step:
 
@@ -137,6 +145,26 @@ now my play for this part,
 
 <img width="1647" height="450" alt="deploy" src="https://github.com/user-attachments/assets/307d4b34-adec-47f6-b37a-9a033ee9dc8a" />
 
+
+now *dns-master* is ready.
+
+</details> 
+
+
+
+
+
+<details> 
+ 
+<summary> Slave </summary>
+
+
+
+#### Create Zone
+
+
+
+</details> 
 
 -------------------------------------------------------------------
 
