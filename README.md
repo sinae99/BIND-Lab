@@ -1,8 +1,11 @@
 # BIND-Lab
- DNS management
+ DNS management + automation
 
 
 deploying master and slave servers, creating and managing zones, adding DNS records and different DNS configurations
+
+
+
 
 
 
@@ -210,6 +213,11 @@ and, play for setting the conf file to start the syncing
 now a test:
 
 <img width="952" height="552" alt="dig slave" src="https://github.com/user-attachments/assets/47595b54-ed70-45a1-9bcf-49a37742189f" />
+
+
+and a test for ensuring the servers synchronization after adding a new record on master (`test.sina`):
+
+<img width="1637" height="831" alt="logcheck" src="https://github.com/user-attachments/assets/e62f43b6-61ad-4af6-8bce-da660f36a714" />
 
 
 
