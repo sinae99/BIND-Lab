@@ -22,7 +22,7 @@ deploying master and slave servers, creating and managing zones, adding DNS reco
 
 
 
-## Deploy:
+## Initial Deploy:
 
 `ansible.cfg` :
 
@@ -43,16 +43,6 @@ first a connectivity check with machines after sharing the pub keys:
 
 
 
-
-
-
-
-
--------------------------------------------------------------------
-
-
-
-## Tasks and Scenarios:
 
 
 #### Create Zone
@@ -106,6 +96,56 @@ zone "sina" {
     allow-transfer { 192.168.1.12; };
 };
 ```
+
+
+now my play for this part, 
+
+`deploy_sina_zone.yaml`
+
+```
+- name: Deploy sina zone on master
+  hosts: dns-master
+  become: yes
+  tasks:
+    - name: Copy named.conf.local
+      copy:
+        src: ../files/named.conf.local
+        dest: /etc/bind/named.conf.local
+        owner: root
+        group: bind
+        mode: '0644'
+      notify: restart bind
+
+    - name: Copy db.sina zone file
+      copy:
+        src: ../files/db.sina
+        dest: /etc/bind/db.sina
+        owner: root
+        group: bind
+        mode: '0644'
+      notify: restart bind
+
+  handlers:
+    - name: restart bind
+      systemd:
+        name: bind9
+        state: restarted
+```
+
+
+
+
+<img width="1647" height="450" alt="deploy" src="https://github.com/user-attachments/assets/307d4b34-adec-47f6-b37a-9a033ee9dc8a" />
+
+
+-------------------------------------------------------------------
+
+
+
+## Tasks and Scenarios:
+
+
+trying to automate some task.
 
 
 #### Add Record
