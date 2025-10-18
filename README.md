@@ -1,5 +1,5 @@
 # BIND-Lab
- DNS management + automation
+ DNS management ( Bind9 ) + automation  ( Ansible ) 
 
 
 deploying master and slave servers, creating and managing zones, adding DNS records and different DNS configurations
@@ -43,9 +43,9 @@ ansible_python_interpreter=/usr/bin/python3
 first a connectivity check with machines after sharing the pub keys:
 
 
-<img width="788" height="265" alt="ping" src="https://github.com/user-attachments/assets/5fcc5218-abd5-4f8b-84e8-ae963f871819" />
 
 
+<img width="672" height="245" alt="ping" src="https://github.com/user-attachments/assets/f81d3ca3-abe6-4c38-90e8-20a008207b3c" />
 
 
 
@@ -172,8 +172,8 @@ zone "sina" {
 };
 ```
 
-and, play for setting the conf file to start the syncing
-`deploy_slave.yaml`
+and `deploy_slave.yaml`, a play for setting the conf file to start the syncing
+
 
 ```
 - name: Deploy BIND on slave
@@ -236,16 +236,27 @@ and a test for ensuring the servers synchronization after adding a new record on
 trying to automate some task.
 
 
-#### Add Record
-( Insert a selected DNS record )
+
+#### Add Zone
+( Insert a new zone )
 
 
-#### Modify Record
+
+
+#### Add DB
+( Create a new Database file )
+
+
+
+#### Add or Modify Record
+( Insert a selected record )
+
+
+#### Validate and Reload Configuration
 ( Delete or update a record )
 
 
-#### Configure Cache-Only Mode
-( Set up a node as a caching resolver )
+
 
 
 
